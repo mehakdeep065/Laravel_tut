@@ -1,0 +1,388 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+
+@import 'bootstrap/scss/bootstrap';
+
+/* hero component css  */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem; /* same as gap-8 (2rem = 32px) */
+    // background-color: #94a3b8; /* same as Tailwind's slate-400 */
+    background-image: url('https://i0.wp.com/picjumbo.com/wp-content/uploads/man-camping-in-nature-and-watching-stars-free-photo.jpg?w=2210&quality=70');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50vh;
+    width: 100%;
+    color: white;
+}
+
+/* Responsive (same as md:h-screen) */
+@media (min-width: 768px) {
+    .hero-section {
+        height: 100vh;
+    }
+}
+
+.description {
+    // position: relative;
+    // left:40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+    // background-color: blue;
+}
+
+.description p {
+    width: 250px;
+    text-align: center;
+}
+//contant1 css
+.content-wrapper {
+    display: flex;
+}
+
+.content-section {
+    display: flex;
+    background-color: #171616;
+}
+
+.text-section {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Tailwind's gap-8 = 2rem */
+    padding-top: 10rem; /* Tailwind's pt-40 = 160px */
+    padding-left: 90px; /* Custom pl-90 */
+    padding-right: 0.75rem; /* px-3 */
+    width: 66.66%; /* Tailwind w-2/3 */
+    height: 100vh;
+}
+
+.text-section p {
+    width: 60%; /* Tailwind's w-3/5 */
+    font-weight: 300; /* Tailwind's font-light */
+    color: #9ca3af; /* Tailwind's text-gray-400 */
+}
+
+.animal-button {
+    border: 1px solid white;
+
+    padding: 0.5rem 0;
+    width: 15vw;
+    color: white;
+    background-color: #171616;
+    border-radius: 1.5rem; /* rounded-3xl */
+    cursor: pointer;
+}
+
+.image-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.bear-img {
+    width: 33.33%; /* Tailwind w-1/3 */
+}
+
+/* Approximate Tailwind rotate classes */
+.rotate-30 {
+    transform: rotate(30deg);
+}
+
+.rotate-60 {
+    transform: rotate(60deg);
+}
+//cardcss
+.card-wrapper {
+    background-color: #171616;
+    width: 100%;
+}
+
+.card-box {
+    display: flex;
+    position: relative;
+    top: -30px; /* negative margin like -top-30 */
+    left: 10vw;
+    width: 40vw;
+    height: 50vw;
+    border: 2px solid black;
+}
+
+/* Medium screen override (like Tailwind's md:) */
+@media (min-width: 768px) {
+    .card-box {
+        left: 30vw;
+        height: 20vw;
+    }
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Tailwind's gap-10 = 2.5rem = 40px */
+    justify-content: center;
+    padding: 2.5rem; /* Tailwind's p-10 = 40px */
+}
+
+.quote {
+    color: #9ca3af; /* Tailwind's text-gray-400 */
+}
+
+.role {
+    color: #93c5fd; /* Tailwind's text-blue-300 */
+}
+// mid card 
+.mid-card-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem;
+}
+
+.mid-card {
+    // background-color: #b91c1c; /* red-700 */
+    border-radius: 0.5rem;
+    border: 1px solid black;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.mid-card-inner {
+    display: flex;
+    width: 100%;
+}
+
+.mid-card-image {
+    width: 40%;
+    object-fit: cover;
+    border-right: 1px solid black;
+}
+
+.mid-card-content {
+    width: 60%;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    color: black;
+    background-color: white;
+}
+
+.mid-card-content h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.stars {
+    color: gold;
+    font-size: 1.2rem;
+}
+
+.description {
+    color: #6b7280; /* gray-400 */
+    font-weight: 300;
+}
+
+.mid-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.see-details {
+    background-color: #171616;
+    color: white;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.see-details:hover {
+    background-color: #2a2a2a;
+}
+.topthings{
+    display: flex;
+    align-items: center;
+}
+
+//footer
+.footer-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5rem; /* similar to pt-20 */
+    margin-left: 7.5rem; /* mx-30: margin left/right 7.5rem */
+    margin-right: 7.5rem;
+    font-weight: bold;
+    font-size: 1.25rem; /* text-xl */
+    align-items: center;
+    color: #000000;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 1rem; /* gap-4 */
+    color: #171616;
+}
+
+// about section 
+
+.about-bg {
+    
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem; /* approx text-xl */
+    height: 100vh;
+    justify-content: center;
+    margin-top: 10vw;
+}
+
+.about-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem;
+    justify-content: center;
+    border: 1px solid #00000033;
+    padding: 2.5rem;
+    border-radius: 1rem;
+
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.description {
+    width: 23vw;
+    text-align: center;
+}
+
+.divider {
+    width: 50%;
+    border: none;
+    border-top: 1px solid black;
+}
+
+.contact-info {
+    display: flex;
+    gap: 2.5rem;
+}
+
+// contect css
+body.contact-body {
+    background-image: url('/images/561510-nature-landscape.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    font-size: 1.25rem; /* text-xl */
+    font-family: Arial, sans-serif;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 1rem;
+    margin-top: 10vw;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.47);
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.input {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.message {
+    padding: 2rem;
+}
+
+.submit-btn {
+    border: 1px solid #000;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #372119;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #251710;
+}
+
+.contact-details {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.contactfoot{
+    margin-top: 5vw;
+}
+
+
+
