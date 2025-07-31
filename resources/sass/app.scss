@@ -237,13 +237,18 @@
 .footer-icons {
     display: flex;
     gap: 1rem; /* gap-4 */
-    color: #171616;
+    color: black;
+}
+.footer-icons a{
+  
+    color: black;
 }
 
 // about section 
 
 .about-bg {
-    
+    background-image: url('/public/images/download.jpeg');
+    // background-color: brown;
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -258,7 +263,8 @@
     font-size: 1.25rem; /* approx text-xl */
     height: 100vh;
     justify-content: center;
-    margin-top: 10vw;
+    margin-top: 8vw;
+    color: white;
 }
 
 .about-card {
@@ -268,7 +274,7 @@
     gap: 1rem;
     font-size: 1.25rem;
     justify-content: center;
-    border: 1px solid #00000033;
+    border: 1px solid #fffafa33;
     padding: 2.5rem;
     border-radius: 1rem;
 
@@ -292,17 +298,18 @@
 
 .contact-info {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.5rem;
 }
 
 // contect css
 body.contact-body {
-    background-image: url('/images/561510-nature-landscape.jpg');
+    background-image: url('/public/images/561510-nature-landscape.jpg');
+    // background-color: aquamarine;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    background-repeat: no-repeat;
+    height: 150vh;
     width: 100%;
-    margin: 0;
     font-size: 1.25rem; /* text-xl */
     font-family: Arial, sans-serif;
 }
@@ -314,7 +321,7 @@ body.contact-body {
     justify-content: center;
     height: 100vh;
     gap: 1rem;
-    margin-top: 10vw;
+    margin-top: 3vw;
 }
 
 .contact-card {
@@ -362,7 +369,7 @@ body.contact-body {
     background-color: #372119;
     color: white;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
@@ -379,9 +386,19 @@ body.contact-body {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+ 
+}
+.social-icons a {
+   color: #000;
 }
 .contactfoot{
-    margin-top: 5vw;
+    margin-top: 2vw;
+}
+.contactfoot p ,.contactfoot a{
+    color: white;
+}
+.aboutfoot p ,.aboutfoot a{
+    color: white;
 }
 
 

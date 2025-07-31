@@ -1,6 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 *{
-    background-color: #797979;
+    background-color: #919191ed;
+
 }
 /* hero component css  */
 .hero-section {
