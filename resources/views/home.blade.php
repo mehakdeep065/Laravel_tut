@@ -51,7 +51,7 @@
             </div>
         </main>
     </div>
-    <x-head_foot class="" />
+    <x-head_foot  />
 </body>
 
 </main>

@@ -1,38 +1,10 @@
-@import 'bootstrap/scss/bootstrap';
-*{
-    background-color: #919191ed;
+/* @import 'bootstrap/scss/bootstrap'; */
 
-}
-/* hero component css  */
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 2rem; /* same as gap-8 (2rem = 32px) */
-    background-color: #94a3b8; /* same as Tailwind's slate-400 */
-    background-image: url('images/man-camping-in-nature-and-watching-stars-picjumbo-com.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 50vh;
-    width: 100%;
-    color: white;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Responsive (same as md:h-screen) */
-@media (min-width: 768px) {
-    .hero-section {
-        height: 100vh;
-    }
-}
+/* Or your custom PostCSS code */
 
-.description {
-    display: flex;
-    justify-content: center;
-}
 
-.description p {
-    width: 250px;
-}
 
