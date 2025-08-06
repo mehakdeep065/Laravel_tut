@@ -7,7 +7,7 @@
     <title>Admin login</title>
     @vite('resources/css/app.css')
 
-  
+
 </head>
 
 <body>
@@ -20,10 +20,16 @@
 
             <form class="flex flex-col gap-1  w-[20vw] " action="{{ route('admin.login') }}" method="POST">
                 @csrf
+                @error('email')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
                 <label for="email">Email</label>
-                <input  class="p-1 border "  type="email" name="email" placeholder="Email" required>
-                 <label for="password">Password</label>
-                <input  class="p-1 border"  type="password" name="password" placeholder="Password" required>
+                <input class="p-1 border " type="email" name="email" placeholder="Email" required>
+                @error('email')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+                <label for="password">Password</label>
+                <input class="p-1 border" type="password" name="password" placeholder="Password" required>
                 <button class="border p-2 bg-blue-600 text-white rounded mt-5" type="submit">Login</button>
             </form>
         </div>

@@ -48,8 +48,10 @@ class AdminController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->route('admin.dashboard');
         }
-
+        else{
         return back()->withErrors(['email' => 'Invalid credentials'])->withInput();
+        
+        }
     }
 
     public function logout()

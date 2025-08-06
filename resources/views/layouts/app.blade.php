@@ -54,7 +54,7 @@
                                 <a class="nav-link" href="/contact">Contact</a>
                             </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="/admin/login">Admin</a>
+                                <a class="nav-link" href="/admin">Admin</a>
                             </li>
                             
 
@@ -70,6 +70,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                               <li class="nav-item">
+                                <a class="nav-link" href="/showWebform">addwebsites</a>
+                            </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="/webshow">showwebsites</a>
                             </li>
 
                             <li class="nav-item dropdown">

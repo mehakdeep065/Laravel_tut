@@ -26,6 +26,10 @@
                     <input class="p-1 border " type="email" name="email" placeholder="Email" required>
                     <label for="password">Password</label>
                     <input class="p-1 border" type="password" name="password" placeholder="Password" required>
+
+                    @error('password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                     <label for="password_confirmation">Confirm Password</label>
                     <input class="p-1 border" type="password" name="password_confirmation"
                         placeholder="Confirm password" required>

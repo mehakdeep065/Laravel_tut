@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,15 +43,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::prefix('admin')->group(function () {
+
     Route::get('/register', [AdminController::class, 'showRegisterForm'])->name('admin.register.form');
     Route::post('/register', [AdminController::class, 'register'])->name('admin.register');
 
-    Route::get('/login', [AdminController::class, 'showLoginForm'])->name('admin.login.form');
-    Route::post('/login', [AdminController::class, 'login'])->name('admin.login');
+    Route::get('/', [AdminController::class, 'showLoginForm'])->name('admin.login.form');
+    Route::post('/', [AdminController::class, 'login'])->name('admin.login');
 
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
     });
+
 });
+//website uploders routes
+    Route::middleware(['auth'])->group( function (){
+        Route::get('/webshow',[WebController::class,'show']);
+        Route::get('/showWebform',[WebController::class,'index']);
+        Route::post('/submitweb',[WebController::class,'addweb']);
+    });
 
