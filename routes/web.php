@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AgentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
+use App\Neuron\MyAgent;
+use NeuronAI\Messages\UserMessage;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,5 +65,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/webshow',[WebController::class,'show']);
         Route::get('/showWebform',[WebController::class,'index']);
         Route::post('/submitweb',[WebController::class,'addweb']);
+      
     });
-
+//chat agent nuron ai routes.
+Route::post('ask',[AgentController::class,'ask']);
+Route::get('ask-form',[AgentController::class,'ask_form']);
+//Posts
+Route::get('/posts',[PostController::class,'viewpost'])->name('posts.viewPost');
+Route::get('/posts-form',[PostController::class,'postform']);
+Route::post('/submit-form',[PostController::class,'addpost'])->name('posts.store');

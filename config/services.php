@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'anthropic'=>[
+        'key' => env(key:'ANTHROPIC_KEY'),
+        'model' => env('ANTHROPIC_MODLE','claude-3-7-sonnet-latest'),
+    ]
+
 ];

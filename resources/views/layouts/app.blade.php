@@ -77,6 +77,13 @@
                               <li class="nav-item">
                                 <a class="nav-link" href="/webshow">showwebsites</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ask-form">ask-chat</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/posts">Posts</a>
+                            </li>
+
 
                             <li class="nav-item dropdown">
 

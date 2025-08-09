@@ -19,11 +19,13 @@
                 <label for="webname">Website name</label>
                 <input type="text" value="{{ old('webname') }}" name="webname" id="webname">
                 <label for="webdes">Website Description</label>
-                <input type="text" value="{{ old('webdes') }}" name="webdes" id="webndes">
+               <textarea name="webdes" id="webdes" rows="4" cols="50">{{ old('webdes') }}</textarea>
                 <input type="file" name="zipfile" required>
-                <button type="submit">Upload Website</button>
+                <button class="bg-blue-400 p-2 w-1/2 mt-5 rounded-xl flex self-center justify-center
+                
+                
+                " type="submit">Upload Website</button>
 
-                <input type="submit" value="submit" name="submit">
             </form>
         </div>
     </div>
