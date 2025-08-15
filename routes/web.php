@@ -71,6 +71,10 @@ Route::prefix('admin')->group(function () {
 Route::post('ask',[AgentController::class,'ask']);
 Route::get('ask-form',[AgentController::class,'ask_form']);
 //Posts
-Route::get('/posts',[PostController::class,'viewpost'])->name('posts.viewPost');
-Route::get('/posts-form',[PostController::class,'postform']);
-Route::post('/submit-form',[PostController::class,'addpost'])->name('posts.store');
+Route::get('/posts', [PostController::class, 'viewpost'])->name('posts.viewPost');
+Route::get('/posts-form', [PostController::class, 'postform'])->name('posts.postform');
+Route::post('/submit-form', [PostController::class, 'addpost'])->name('posts.store');
+
+//test
+
+Route::post('/huggingface', [PostController::class, 'analyze']);

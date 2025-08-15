@@ -8,12 +8,21 @@
 </head>
 <body>
     <div class="flex bg-slate-600 h-screen justify-center items-center">
-    <form class="flex flex-col " method="post" action="/ask">
-        @csrf
-        <label class="text-3xl text-white mb-2">Write Text Here</label>
-        <textarea class="border rounded bg-slate-400" name="ask" rows="4" cols="50" ></textarea>
-        <input class="border mt-4 w-1/2 flex self-center p-2 rounded bg-black text-white text-lg" type="submit" value="Submit" name="submit">
-    </form>
+<form action="{{ url('ask') }}" method="POST">
+    @csrf
+    <input type="text" name="post_name" placeholder="Enter post title">
+    <button type="submit">Ask AI</button>
+</form>
+
+@if($error)
+    <p style="color:red;">{{ $error }}</p>
+@endif
+
+@if($response)
+    <h3>AI Response:</h3>
+    <p>{{ $response }}</p>
+@endif
+
 </div>
 </body>
 </html>
