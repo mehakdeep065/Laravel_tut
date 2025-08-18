@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('post_name');
             $table->text('post_description');
-            $table->string('post_path')->nullable();
+            $table->string('post_path');
+            $table->string('cate_name')->nullable();
             $table->timestamps();
         });
+    
     }
 
     /**

@@ -74,7 +74,10 @@ Route::get('ask-form',[AgentController::class,'ask_form']);
 Route::get('/posts', [PostController::class, 'viewpost'])->name('posts.viewPost');
 Route::get('/posts-form', [PostController::class, 'postform'])->name('posts.postform');
 Route::post('/submit-form', [PostController::class, 'addpost'])->name('posts.store');
+Route::get('/posts-edit/{id}', [PostController::class, 'editpost'])->name('posts.edit');
+Route::patch('/posts-update/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts-delete/{id}', [PostController::class, 'deletepost'])->name('posts.delete');
 
 //test
 
-Route::post('/huggingface', [PostController::class, 'analyze']);
+// Route::post('/huggingface', [PostController::class, 'analyze']);
