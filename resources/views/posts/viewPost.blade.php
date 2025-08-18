@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts</title>
     @vite('resources/css/app.css')
+    <script src="https://kit.fontawesome.com/754e441a92.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                                        <form action="{{ route('posts.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?')">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route('posts.delete',$post->id) }}"><button type="submit" class="bg-red-500 text-white px-2 rounded">Delete</button></a>
+                                        <a href="{{ route('posts.delete',$post->id) }}"><button type="submit" class="border-2 text-black px-2 rounded"><i class="fa-solid fa-trash"></i></button></a>
                                         </form>
                                     </div>
                                 </div>
