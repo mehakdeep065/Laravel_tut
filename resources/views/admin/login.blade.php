@@ -1,40 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{ $activeDaisyTheme ?? 'light' }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin login</title>
+    <title>Admin Login</title>
     @vite('resources/css/app.css')
-
-
 </head>
 
-<body>
-    <div class="flex bg-gray-200 justify-center h-[100vh] items-center">
-        <div class="login_div_in bg-white p-20 flex flex-col gap-10  text-xl rounded-2xl">
-            <h2 class="flex w-full border p-1 rounded font-mono  text-4xl  justify-center ">Admin Login</h2>
+<body class="bg-base-200 flex justify-center items-center min-h-screen">
+
+    <div class="card w-full max-w-md shadow-2xl bg-base-100">
+        <div class="card-body">
+            <h2 class="card-title text-3xl justify-center">Admin Login</h2>
+
             @if(session('success'))
-                <p>{{ session('success') }}</p>
+                <div class="alert alert-success mt-2">
+                    {{ session('success') }}
+                </div>
             @endif
 
-            <form class="flex flex-col gap-1  w-[20vw] " action="{{ route('admin.login') }}" method="POST">
+            <form action="{{ route('admin.login') }}" method="POST" class="space-y-3">
                 @csrf
-                @error('email')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
-                <label for="email">Email</label>
-                <input class="p-1 border " type="email" name="email" placeholder="Email" required>
-                @error('email')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
-                <label for="password">Password</label>
-                <input class="p-1 border" type="password" name="password" placeholder="Password" required>
-                <button class="border p-2 bg-blue-600 text-white rounded mt-5" type="submit">Login</button>
+
+                <!-- Email -->
+                <div>
+                    <label class="label">
+                        <span class="label-text">Email</span>
+                    </label>
+                    <input type="email" name="email" placeholder="Enter email"
+                           class="input input-bordered w-full" required />
+                    @error('email')
+                        <span class="text-error text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label class="label">
+                        <span class="label-text">Password</span>
+                    </label>
+                    <input type="password" name="password" placeholder="Enter password"
+                           class="input input-bordered w-full" required />
+                    @error('password')
+                        <span class="text-error text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Button -->
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary w-full">Login</button>
+                </div>
             </form>
         </div>
     </div>
 
 </body>
-
 </html>

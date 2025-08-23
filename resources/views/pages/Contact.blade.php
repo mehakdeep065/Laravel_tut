@@ -3,16 +3,7 @@
 @section('content')
 
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home_main</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-     <script src="https://kit.fontawesome.com/754e441a92.js" crossorigin="anonymous"></script>
 
-</head>
 <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-2">
@@ -59,7 +50,7 @@
             </div>
         </div>
     </div>
-    <x-head_foot contClass="contactfoot"/>
+    <x-head_foot/>
 </body>
 
 </main>

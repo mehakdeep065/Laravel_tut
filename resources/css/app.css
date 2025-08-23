@@ -1,8 +1,11 @@
 /* @import 'bootstrap/scss/bootstrap'; */
+/* @import "tailwindcss"; */
+/* @plugin "daisyui"; */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 /* Or your custom PostCSS code */
 

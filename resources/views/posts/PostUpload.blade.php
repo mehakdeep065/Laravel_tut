@@ -1,67 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{ $activeDaisyTheme ?? 'light' }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Posts</title>
-    @vite('resources/css/app.css')
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Posts</title>
+  @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Upload Post</h1>
+<body class="bg-base-200 min-h-screen flex items-center justify-center">
+  <div class="card w-full max-w-lg shadow-xl bg-base-100">
+    <div class="card-body">
+      <h1 class="text-2xl font-bold text-center">📤 Upload Post</h1>
 
-        {{-- Success Message --}}
-        @if(session('success'))
-            <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
+      {{-- Success Message --}}
+      @if(session('success'))
+        <div class="alert alert-success shadow-lg">
+          <span>{{ session('success') }}</span>
+        </div>
+      @endif
 
-        {{-- Error Message --}}
-        @if(session('error'))
-            <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
-                {{ session('error') }}
-            </div>
-        @endif
+      {{-- Error Message --}}
+      @if(session('error'))
+        <div class="alert alert-error shadow-lg">
+          <span>{{ session('error') }}</span>
+        </div>
+      @endif
 
-        {{-- Validation Errors --}}
-        @if($errors->any())
-            <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
-                <ul class="list-disc pl-5">
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+      {{-- Validation Errors --}}
+      @if($errors->any())
+        <div class="alert alert-error shadow-lg">
+          <ul class="list-disc pl-5">
+            @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
 
-        <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data" class="space-y-4">
-            @csrf
-            <!-- Post Name -->
-            <div>
-                <label for="post_name" class="block text-gray-700 font-medium mb-2">Post Name</label>
-                <input type="text" name="post_name" id="post_name"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                    required>
-                <label for="cate_name" class="block text-gray-700 font-medium mb-2">category Name</label>
-                <input type="text" name="cate_name" id="cate_name"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                    required>
-                
-                <label for="post_path" class="block text-gray-700 font-medium mb-2">upload Post </label>
-                <input type="file" name="post_path" id="post_path"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                    required>
-            </div>
+      <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+        @csrf
+        
+        <!-- Post Name -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Post Name</span>
+          </label>
+          <input type="text" name="post_name" placeholder="Enter post title"
+            class="input input-bordered w-full" required>
+        </div>
 
-            <!-- Submit Button -->
-            <div class="text-center">
-                <button type="submit"
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition duration-200">
-                    Submit
-                </button>
-            </div>
-        </form>
+        <!-- Category -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Category Name</span>
+          </label>
+          <input type="text" name="cate_name" placeholder="Enter category"
+            class="input input-bordered w-full" required>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Upload Post</span>
+          </label>
+          <input type="file" name="post_path" class="file-input file-input-bordered w-full" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-control mt-6">
+          <button type="submit" class="btn btn-primary w-full">Submit</button>
+        </div>
+      </form>
     </div>
+  </div>
 </body>
 </html>

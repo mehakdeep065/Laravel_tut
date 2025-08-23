@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\thems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -21,6 +22,24 @@ class AdminController extends Controller
     {
         return view('admin.register');
     }
+    //thems code
+ public function Templates()
+{
+    $daisyThemes = ['light', 'dark', 'cupcake', 'emerald', 'retro']; 
+    $activeDaisyTheme = thems::where('key', 'active_daisy_theme')->value('value') ?? 'light';
+
+    return view('admin.templates', compact('activeDaisyTheme', 'daisyThemes'));
+}
+
+    public function updateTemplate(Request $r)
+    {
+       thems::updateOrCreate(
+        ['key' => 'active_daisy_theme'],
+        ['value' => $r->theme]
+    );
+    return back()->with('success', 'Theme updated!');
+    }
+
 
     public function register(Request $request)
     {
@@ -32,7 +51,7 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
          
         ]);
-
+        
         return redirect()->route('admin.login.form')->with('success', 'Admin registered. Please log in.');
     }
 

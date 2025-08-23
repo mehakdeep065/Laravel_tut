@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{ $activeDaisyTheme ?? 'light' }}">
 
 <head>
     <meta charset="UTF-8">
@@ -9,43 +9,59 @@
     <script src="https://kit.fontawesome.com/754e441a92.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <div class="flex flex-col justify-center items-center min-h-screen bg-[#FAF9EE]">
-        <div class="bg-[#DCCFC0] p-6 rounded-lg flex flex-col gap-4 w-11/12 sm:w-3/4 lg:w-1/2 shadow-lg">
+<body class="bg-base-200">
+    <div class="flex flex-col justify-center items-center min-h-screen">
+        <div class="card w-11/12 sm:w-3/4 lg:w-2/3 bg-base-100 shadow-xl p-6">
+
             <!-- Header -->
-            <div class="flex bg-[#4f46e5] text-white text-xl p-4 rounded-md justify-between items-center">
-                <h1 class="text-2xl font-semibold">View Posts</h1>
-                <a href="{{ url('/posts-form') }}"
-                    class="bg-[#6366f1] hover:bg-[#4338ca] px-4 py-2 rounded text-lg transition duration-200">
-                    Post Upload
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold">View Posts</h1>
+                <a href="{{ url('/posts-form') }}" class="btn btn-primary">
+                    + Post Upload
                 </a>
             </div>
 
             <!-- Posts Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 @foreach ($posts as $post)
-                    <div
-                        class="bg-[#ffffff] border border-[#e5e7eb] rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
-                        <img class="w-full h-48 object-cover" src="{{ asset('storage/' . $post->post_path) }}"
-                            alt="{{ $post->post_name }}">
-                        <div class="p-4">
-                            <h2 class="text-xl font-bold text-[#1f2937] mb-2 flex justify-between">{{ $post->post_name }}
-                                <span>({{ $post->cate_name }})</span>
-                                <div>
-                                    <div class="flex gap-2">
-                                       <a href="{{ route('posts.edit',$post->id) }}"><button class="bg-green-300 text-gray-600 px-2 rounded">Edit</button></a>
-                                       <form action="{{ route('posts.delete', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <a href="{{ route('posts.delete',$post->id) }}"><button type="submit" class="border-2 text-black px-2 rounded"><i class="fa-solid fa-trash"></i></button></a>
-                                        </form>
-                                    </div>
-                                </div>
+                    <div class="card bg-base-100 border border-gray-200 shadow-sm hover:shadow-lg transition duration-300">
+                        <figure>
+                            <img src="{{ asset('storage/' . $post->post_path) }}" 
+                                 alt="{{ $post->post_name }}" 
+                                 class="w-full h-48 object-cover">
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title text-lg justify-between">
+                                <span>{{ $post->post_name }}</span>
+                                <span class="badge badge-secondary">{{ $post->cate_name }}</span>
                             </h2>
-                            <p class="text-[#4b5563] text-sm">{{ Str::limit($post->post_description, 100) }}</p>
+
+                            <p class="text-sm text-gray-600">
+                                {{ Str::limit($post->post_description, 100) }}
+                            </p>
+
+                            <!-- Actions -->
+                            <div class="card-actions justify-end mt-4">
+                                <a href="{{ route('posts.edit',$post->id) }}" class="btn btn-success btn-sm">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </a>
+
+                                <form action="{{ route('posts.delete', $post->id) }}" method="POST" 
+                                      onsubmit="return confirm('Are you sure you want to delete this post?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-error btn-sm">
+                                        <i class="fa-solid fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-6">
                 {{ $posts->links() }}
             </div>
         </div>

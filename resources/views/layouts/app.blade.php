@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="{{ $activeDaisyTheme }}">
 
 <head>
     <meta charset="utf-8">
@@ -13,102 +13,71 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/754e441a92.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+        <!-- Navbar -->
+        <div class="navbar bg-base-100 shadow-md">
+            <div class="flex-1">
+                <a href="{{ url('/') }}" class="btn btn-ghost normal-case text-xl text-base-content ">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/about">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/contact">Contact</a>
-                            </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="/admin">Admin</a>
-                            </li>
-                            
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/about">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/contact">Contact</a>
-                            </li>
-                               <li class="nav-item">
-                                <a class="nav-link" href="/showWebform">addwebsites</a>
-                            </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="/webshow">showwebsites</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/ask-form">ask-chat</a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="/posts">Posts</a>
-                            </li>
-
-
-                            <li class="nav-item dropdown">
-
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
             </div>
-        </nav>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal px-3">
+                    @guest
+                     <div class="flex items-center">
+                        @if (Route::has('login'))
+                            <li><a class="text-base-content" href="{{ route('login') }}">Login</a></li>
+                        @endif
+                            <li><a class="text-base-content" href="/about">About</a></li>
+                            <li><a class="text-base-content" href="/contact">Contact</a></li>
+                            <li><a class="btn btn-primary btn-outline mx-4" href="/admin">Admin</a></li>
+                        </div>
+                        @if (Route::has('register'))
+                            <li><a class="btn btn-outline btn-secondary " href="{{ route('register') }}">Register</a></li>
+                        @endif
+                    @else
+                    <div class="flex gap-2 items-center">
+                        <li><a class="text-base-content" href="/about">About</a></li>
+                        <li><a class="text-base-content" href="/contact">Contact</a></li>
+                        <li><a class="btn btn-primary btn-outline " href="/showWebform">Add Websites</a></li>
+                        <li><a class="btn btn-secondary btn-outline" href="/webshow">Show Websites</a></li>
+                        <li><a class="btn btn-accent btn-outline" href="/ask-form">Ask Chat</a></li>
+                        <li><a class="btn btn-info btn-outline" href="/posts">Posts</a></li>
 
+                        <li>
+                            <details>
+                                <summary class="text-base-content">{{ Auth::user()->name }}</summary>
+                                <ul class="p-2 bg-base-100 rounded-t-none">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                            class="btn btn-error btn-sm text-base-100">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </details>
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                        </div>
+                    @endguest
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Page Content -->
         <main>
             @yield('content')
         </main>

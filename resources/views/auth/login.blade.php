@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+<div class=" bg-base-200 h-[90vh] p-10 ">
+    <div class="row justify-content-center ">
+        <div class="col-md-8 flex justify-center ">
+            <div class="card w-2/3">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">

@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{ $activeDaisyTheme ?? 'light' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     @vite('resources/css/app.css')
+    <title>Ask AI</title>
+    @vite('resources/css/app.css')
 </head>
-<body>
-    <div class="flex bg-slate-600 h-screen justify-center items-center">
-<form action="{{ url('ask') }}" method="POST">
-    @csrf
-    <input type="text" name="post_name" placeholder="Enter post title">
-    <button type="submit">Ask AI</button>
-</form>
+<body class="bg-base-200 h-screen flex justify-center items-center">
 
-@if($error)
-    <p style="color:red;">{{ $error }}</p>
-@endif
+    <div class="card w-full max-w-md shadow-xl bg-base-100 p-6">
+        <h2 class="text-2xl font-bold text-center mb-4">Ask AI</h2>
 
-@if($response)
-    <h3>AI Response:</h3>
-    <p>{{ $response }}</p>
-@endif
+        <!-- Form -->
+        <form action="{{ url('ask') }}" method="POST" class="flex flex-col gap-4">
+            @csrf
+            <input type="text" 
+                   name="post_name" 
+                   placeholder="Enter post title" 
+                   class="input input-bordered w-full" />
 
-</div>
+            <button type="submit" class="btn btn-primary w-full">Ask AI</button>
+        </form>
+
+        <!-- Error -->
+        @if($error)
+            <div class="alert alert-error mt-4">
+                <span>{{ $error }}</span>
+            </div>
+        @endif
+
+        <!-- Response -->
+        @if($response)
+            <div class="mt-6">
+                <h3 class="text-lg font-semibold">AI Response:</h3>
+                <div class="mockup-code mt-2 p-3">
+                    <pre><code>{{ $response }}</code></pre>
+                </div>
+            </div>
+        @endif
+    </div>
+
 </body>
 </html>
 

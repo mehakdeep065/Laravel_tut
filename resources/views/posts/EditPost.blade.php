@@ -1,33 +1,33 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{ $activeDaisyTheme ?? 'light' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Posts</title>
+    <title>Update Post</title>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Upload Post</h1>
+<body class="bg-base-200 min-h-screen flex items-center justify-center">
+
+    <div class="card w-full max-w-lg shadow-2xl bg-base-100 p-6">
+        <h1 class="text-2xl font-bold text-center mb-6">Update Post</h1>
 
         {{-- Success Message --}}
         @if(session('success'))
-            <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
-                {{ session('success') }}
+            <div class="alert alert-success mb-4">
+                <span>{{ session('success') }}</span>
             </div>
         @endif
 
         {{-- Error Message --}}
         @if(session('error'))
-            <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
-                {{ session('error') }}
+            <div class="alert alert-error mb-4">
+                <span>{{ session('error') }}</span>
             </div>
         @endif
 
         {{-- Validation Errors --}}
         @if($errors->any())
-            <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
+            <div class="alert alert-warning mb-4">
                 <ul class="list-disc pl-5">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -36,35 +36,43 @@
             </div>
         @endif
 
-        <form action="{{ route('posts.update',$post->id)}}" method="post" enctype="multipart/form-data" class="space-y-4">
+        <form action="{{ route('posts.update',$post->id)}}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             @method('PATCH')
-             
+
             <!-- Post Name -->
-            <div>
-                <label for="post_name" class="block text-gray-700 font-medium mb-2">Change Post Name</label>
+            <div class="form-control">
+                <label for="post_name" class="label">
+                    <span class="label-text">Change Post Name</span>
+                </label>
                 <input type="text" name="post_name" id="post_name" value="{{ $post->post_name }}"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                    required>
-                <label for="cate_name" class="block text-gray-700 font-medium mb-2">Change category Name</label>
+                    class="input input-bordered w-full" required>
+            </div>
+
+            <!-- Category Name -->
+            <div class="form-control">
+                <label for="cate_name" class="label">
+                    <span class="label-text">Change Category Name</span>
+                </label>
                 <input type="text" name="cate_name" id="cate_name" value="{{ $post->cate_name }}"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                    required>
-                
-                <label for="post_path" class="block text-gray-700 font-medium mb-2">upload diffrent Post </label>
-                <input type="file" name="post_path" id="post_path" value="{{ $post->post_path }}"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-                    required>
+                    class="input input-bordered w-full" required>
+            </div>
+
+            <!-- Upload File -->
+            <div class="form-control">
+                <label for="post_path" class="label">
+                    <span class="label-text">Upload Different Post</span>
+                </label>
+                <input type="file" name="post_path" id="post_path"
+                    class="file-input file-input-bordered w-full" required>
             </div>
 
             <!-- Submit Button -->
-            <div class="text-center">
-                <button type="submit"
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition duration-200">
-                    UPDATE
-                </button>
+            <div class="form-control mt-6">
+                <button type="submit" class="btn btn-primary w-full">Update</button>
             </div>
         </form>
     </div>
+
 </body>
 </html>

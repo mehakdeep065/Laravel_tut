@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{ $activeDaisyTheme ?? 'light' }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>website show</title>
+    <title>Website Show</title>
     @vite('resources/css/app.css')
 </head>
 
-<body>
-   <div class="flex justify-center items-center h-[100vh] bg-[#FDFAF6]">
-    <div class="  bg-[#B2B0E8] min-h-[60vh] p-10 rounded-xl w-full max-w-4xl">
-        <div class=" bg-[#3B38A0] flex justify-between items-center p-4 mb-4 rounded">
-            <h1 class="text-3xl font-mono">Dashboard</h1>
+<body class="bg-base-200">
+   <div class="flex justify-center items-center h-[100vh]">
+    <div class="card bg-base-100 shadow-xl w-full max-w-5xl p-6">
+        
+        <!-- Header -->
+        <div class="navbar bg-primary text-primary-content rounded-xl mb-6 px-6">
+            <h1 class="text-3xl font-bold">Dashboard</h1>
         </div>
 
+        <!-- Table -->
         <div class="overflow-x-auto">
-            <table class="table-auto w-full border border-collapse  rounded">
-                <thead class="bg-[#B2B0E8] ">
+            <table class="table table-zebra w-full">
+                <thead>
                     <tr>
-                        <th class="border px-4 py-2">WebsiteName</th>
-                        <th class="border px-4 py-2">Description</th>
-                        <th class="border px-4 py-2">Webpath</th>
-                        <th class="border px-4 py-2">Created At</th>
+                        <th>Website Name</th>
+                        <th>Description</th>
+                        <th>Web Path</th>
+                        <th>Created At</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($websites as $web)
-                        <tr class="odd:bg-white even:bg-gray-100">
-                            <td class="border px-4 py-2">{{ $web->website_name}}</td>
-                            <td class="border px-4 py-2">{{ $web->website_description }}</td>
-                            <td class="border px-4 py-2 w-[40px]">{{ $web->zip_path}}</td>
-                            <td class="border px-4 py-2">{{ $web->created_at }}</td>
+                        <tr>
+                            <td>{{ $web->website_name }}</td>
+                            <td>{{ $web->website_description }}</td>
+                            <td>
+                                <a href="{{ $web->zip_path }}" 
+                                   class="link link-primary break-words">
+                                   {{ $web->zip_path }}
+                                </a>
+                            </td>
+                            <td>{{ $web->created_at->format('d M, Y h:i A') }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -39,7 +47,6 @@
         </div>
     </div>
 </div>
-
 </body>
 
 </html>

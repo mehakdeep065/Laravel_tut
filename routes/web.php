@@ -23,6 +23,9 @@ use NeuronAI\Messages\UserMessage;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('/contact', function () {
     return view('pages.Contact');
 });
@@ -38,8 +41,7 @@ Route::get('/about', function () {
 
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //admin routes
@@ -57,6 +59,9 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::get('/templates', [AdminController::class, 'templates'])->name('admin.templates');
+    Route::post('/templates/update', [AdminController::class, 'updateTemplate'])->name('admin.updateTemplate');
+
     });
 
 });
