@@ -14,7 +14,7 @@
 
             {{-- Success Message --}}
             @if(session('success'))
-                <div class="alert alert-success mt-2">
+                <div class="alert alert-success mt-2" id="success-alert">
                     {{ session('success') }}
                 </div>
             @endif
@@ -42,10 +42,25 @@
             </form>
 
             <div class="mt-4 text-center">
-                <a href="{{ route('admin.dashboard') }}" class="link link-primary">⬅ Back to Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}" class="link link-primary">⬅Back to Dashboard</a>
             </div>
         </div>
     </div>
+
+       <script>
+        // Get the success alert element
+        const successAlert = document.getElementById('success-alert');
+
+        // If the element exists, set a timeout to hide it after 5 seconds
+        if (successAlert) {
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+                // successAlert.style.transitionDelay = '4s';
+                // Or, you can remove it completely from the DOM
+                // successAlert.remove();
+            }, 4000); 
+        }
+    </script>
 
 </body>
 </html>

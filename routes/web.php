@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\feedsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WebController;
+use App\Models\feeds;
 use Illuminate\Support\Facades\Route;
 use App\Neuron\MyAgent;
 use NeuronAI\Messages\UserMessage;
@@ -83,6 +85,6 @@ Route::get('/posts-edit/{id}', [PostController::class, 'editpost'])->name('posts
 Route::patch('/posts-update/{id}', [PostController::class, 'update'])->name('posts.update');
 Route::delete('/posts-delete/{id}', [PostController::class, 'deletepost'])->name('posts.delete');
 
-//test
+// feeds
+Route::get('/news',[feedsController::class,'getfeeds']);
 
-// Route::post('/huggingface', [PostController::class, 'analyze']);

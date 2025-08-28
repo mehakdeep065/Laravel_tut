@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('photos', function (Blueprint $table) {
+        Schema::create('thems', function (Blueprint $table) {
             $table->id();
-            $table->string('post_name');
-            $table->text('post_description');
-            $table->string('post_path');
-            $table->string('cate_name')->nullable();
-            $table->timestamp('pubDate')->nullable();
+            $table->string('key');
+            $table->string('value');
             $table->timestamps();
         });
-    
     }
 
     /**
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('photos');
+        Schema::dropIfExists('thems');
     }
 };

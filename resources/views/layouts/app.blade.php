@@ -48,10 +48,11 @@
                     <div class="flex gap-2 items-center">
                         <li><a class="text-base-content" href="/about">About</a></li>
                         <li><a class="text-base-content" href="/contact">Contact</a></li>
-                        <li><a class="btn btn-primary btn-outline " href="/showWebform">Add Websites</a></li>
-                        <li><a class="btn btn-secondary btn-outline" href="/webshow">Show Websites</a></li>
-                        <li><a class="btn btn-accent btn-outline" href="/ask-form">Ask Chat</a></li>
-                        <li><a class="btn btn-info btn-outline" href="/posts">Posts</a></li>
+                        <li><a class="text-base-content" href="/showWebform">Add Websites</a></li>
+                        <li><a class="text-base-content" href="/webshow">Show Websites</a></li>
+                        <li><a class="text-base-content" href="/ask-form">Ask Chat</a></li>
+                        <li><a class="text-base-content" href="/posts">Posts</a></li>
+                        <li><a class="text-base-content" href="/news">News</a></li>
 
                         <li>
                             <details>

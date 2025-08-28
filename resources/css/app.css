@@ -8,6 +8,14 @@
 
 
 /* Or your custom PostCSS code */
+.desimg{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+.desimg img{
+    width: 40vw;
+}
 
 
 
