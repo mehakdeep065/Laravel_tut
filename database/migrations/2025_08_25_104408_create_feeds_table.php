@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('title');
             $table->text('description');
             $table->string('category');
+            $table->text('imgurl');
             $table->string('link')->nullable(); 
             $table->timestamps();
         });

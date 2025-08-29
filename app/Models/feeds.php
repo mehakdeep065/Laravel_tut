@@ -9,5 +9,5 @@ class feeds extends Model
 {
     use HasFactory;
     protected $table = 'feeds';
-    protected $fillable = ['title','description','category','link'];
+    protected $fillable = ['title','description','category','imgurl','link'];
 }

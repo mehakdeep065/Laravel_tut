@@ -14,26 +14,37 @@ class FetchRssFeed extends Command
     public function handle()
     {
         // use package to fetch RSS
-        $feed = FeedReader::make("https://timesofindia.indiatimes.com/rssfeeds/4719148.cms", true);
+        $feed = FeedReader::make("https://feeds.feedburner.com/TechCrunch/", true);
+
 
         foreach ($feed->get_items() as $item) {
-            $link = $item->get_link(); // first try
+            $link = $item->get_permalink(); // first try
             if (empty($link)) {
                 // fallback to raw <link> tag
                 $linkTag = $item->get_item_tags('', 'link');
                 $link = $linkTag[0]['data'] ?? null;
             }
 
-            $this->info("Saving: " . $link);
+            //des and img
+            $rawDescription = $item->get_description();
+            // extract first <img> (if exists)
+            preg_match('/<img[^>]+src="([^">]+)"/i', $rawDescription, $matches);
+            $imageUrl = $matches[1] ?? null;
+            // remove <img> tag from description
+            $description = preg_replace('/<img[^>]+\>/i', '', $rawDescription);
 
+            //category
             $categories = $item->get_categories();
             $category = !empty($categories) ? $categories[0]->get_label() : "General";
+            // print_r( $item->data);
+
 
             if ($link && !FeedsModel::where('link', $link)->exists()) {
                 FeedsModel::create([
                     'title' => $item->get_title(),
                     'link' => $link,
-                    'description' => $item->get_description(),
+                    'description' => $description,
+                    'imgurl'=>$imageUrl,
                     'category' => $category,
                 ]);
             }
